@@ -1,0 +1,351 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+  background:#f1f2f6
+}
+.app-inner {
+  padding: 20px;
+  background:#fff;
+  position: relative;
+  box-shadow: -10px 10px 20px rgba(189,189,189,.1);
+}
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+.detailcontent{
+  margin-top:-30px;
+  line-height: 30px;
+  .el-row{
+    color:#333;
+    span{
+      display: inline-block;
+      color:#999;
+    }
+  }
+  .br{
+    border-top:1px solid #eee;
+    margin-top:10px;
+    padding:10px 0;
+  }
+}
+.el-dialog__footer{
+  text-align: center;
+}
+
+/*登录注册*/
+.login {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  background-image: url("../image/login-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  .login-logo{
+    margin:3% 0 2%
+  }
+  .login-inner{
+    width:1000px;
+    background: url("../image/left-bg.png") no-repeat left center;
+    padding-left:465px;
+    .login_box {
+      border-radius: 10px;
+      background: #ffffff;
+      width: 530px;
+      height:600px;
+      padding: 55px 33px 30px;
+      box-shadow: 0px 0px 10px #DCDCDC;
+      .modal-tab-tit {  
+        margin-bottom: 20px; 
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        border-bottom:1px solid #ddd;
+        span { 
+          border-bottom: 3px solid #fff; 
+          border-left: none; 
+          padding: 20px 0; 
+          text-align: center; 
+          font-size: 22px; 
+          color: #C6CED4; 
+          position: relative; 
+          cursor: pointer;
+          &.on { color: #078ee9;border-color:#128BF1}
+        }
+      }
+      form{
+        margin-top: 42px;
+        .el-input {
+          height: 64px;
+          input {
+            height: 64px;
+          }
+        }
+        .input-icon {
+          height: 64px;
+          width: 18px;
+          margin-left: 2px;
+        }
+        .el-button--medium{
+          padding:20px 0;
+          font-size: 22px;
+        }
+        .login-getcode-wrapper{
+          width: 30%;
+          background:#128BF1;
+          color:#fff;
+          font-size: 16px;
+          text-align: center;
+          float: right;
+          height: 64px;
+        }
+        .login-code {
+          width: 33%;
+          height: 38px;
+          float: right;
+          img {
+            cursor: pointer;
+            vertical-align: middle;
+          }
+        }
+      }     
+      .forget{
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        .l{
+          .text{
+            padding-left:10px;
+            margin-left:10px;
+            border-left:1px solid #dedede;
+            text-decoration: underline;
+          }
+          span{
+            color:#999;
+            cursor: pointer;
+          }
+        }
+        .r{
+          color:#128BF1;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .register-inner{
+    width:1000px;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 55px 33px 30px;
+    box-shadow: 0px 0px 10px #DCDCDC;
+    .info{
+      height:400px;
+      overflow-y: auto;
+      line-height: 2.5;
+      text-indent: 2em;
+    }
+    .bottom{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 30px;
+      .btnregister{
+        width: 404px;
+        height: 64px;
+        font-size: 22px;
+        color: #fff;
+        background: #078EE9;
+        border-radius: 32px;
+        text-align: center;
+        box-shadow: 0px 2px 4px #B3C0E7;
+        margin-top:18px;
+      }
+    }
+    
+  }
+}
