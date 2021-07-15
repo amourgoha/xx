@@ -1,10 +1,12 @@
 <template>
   <div class="app-container">
+
     <div class="app-inner" style="padding:5% 15%">
       <el-form ref="form" :model="form" :rules="rules" label-width="155px">
         <el-row>         
+          
           <el-col :span="24">
-            <el-form-item label="填报年份" prop="year">		         
+            <el-form-item label="填报年份" prop="year">	      
               <el-date-picker v-model="form.year" type="year" placeholder="填报年份" value-format='yyyy'style="width:100%" :picker-options="expireTimeOption"></el-date-picker>
             </el-form-item>
 		      </el-col>
@@ -294,6 +296,7 @@ export default {
       foreignTrade:[],
       overseasInvest:[],
       social:[],
+      count:1,
       basicAccountFileId:null,
       customsNoFileId:null,
       foreignInvestNoFileId:null,
@@ -321,6 +324,11 @@ export default {
     let date = new Date()
     let a = date.getFullYear()
     this.form.year = a.toString()
+  },
+  computed:{
+    counts(){
+      return this.$store.state.user.count
+    }
   },
    methods:{
      getDictsList(){
@@ -367,25 +375,29 @@ export default {
        })
        this.proofListdata = []
      },
-     normalizer(node) {
-		      if (!node.childs) {
-		        delete node.childs;
-		      }
-		      return {
-		        id: node.budgetId,
-		        label: node.budgetName,
-		        children: node.childs
-		      }
-     },
+      mesCount(){
+        this.count++
+        this.$store.commit('countnumber',this.count)
+      },
+      normalizer(node) {
+        if (!node.childs) {
+          delete node.childs;
+        }
+        return {
+          id: node.budgetId,
+          label: node.budgetName,
+          children: node.childs
+        }
+      },
      normalizer1(node) {
-		      if (node.children && !node.children.length) {
-		        delete node.children;
-		      }
-		      return {
-		        id: node.areaCode,
-		        label: node.areaName,
-		        children: node.children
-		      }
+      if (node.children && !node.children.length) {
+        delete node.children;
+      }
+      return {
+        id: node.areaCode,
+        label: node.areaName,
+        children: node.children
+      }
      },
 
      handleChange(value, direction, movedKeys) {

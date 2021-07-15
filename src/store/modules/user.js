@@ -7,10 +7,14 @@ const user = {
     name: '',
     avatar: '',
     roles: [],
-    permissions: []
+    permissions: [],
+    count:0,
   },
 
   mutations: {
+    countnumber:(state,data) =>{
+      state.count = data
+    },
     SET_TOKEN: (state, token) => {
       state.token = token
     },
