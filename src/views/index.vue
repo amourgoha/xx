@@ -5,7 +5,9 @@
         <div class="hello mb20">{{ user.userName }},您好,欢迎使用湖南省商务发展资金管理系统</div>
         <div v-if="!verifyStatus" class="hello mb20" @click="handleCheck">您的账号还未授权，请<span style="color:rgb(24, 144, 255)
         ">点击这里</span>填写企业工商信息进行授权</div>
-        <div v-else-if="verifyStatus=='0'" class="hello mb20">资质填报成功，正在审核，请耐心等待</div>
+        <div v-else-if="verifyStatus=='0'" class="hello mb20">
+        资质填报成功，正在审核，请耐心等待
+      </div>
         <div v-else-if="verifyStatus=='2'" class="hello mb20">您的资质授权失败，请<span style="color:rgb(24, 144, 255)
         ">点击这里</span>填写企业工商信息重新授权</div>
       </div>

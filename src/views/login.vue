@@ -162,12 +162,12 @@ export default {
           { required: true, trigger: "blur", message: "验证码不能为空" }
         ],
         mobile: [
-                { required: true, message: "手机号码不能为空", trigger: "blur" },
-                {
-                  pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
-                  message: "请输入正确的手机号码",
-                  trigger: "blur"
-                }
+          { required: true, message: "手机号码不能为空", trigger: "blur" },
+          {
+            pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
+            message: "请输入正确的手机号码",
+            trigger: "blur"
+          }
         ],
         code: [{ required: true, trigger: "change", message: "请填写发送的手机验证码" }]
       },

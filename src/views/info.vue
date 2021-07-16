@@ -1,10 +1,10 @@
 <template>
   <div class="app-container">
-
     <div class="app-inner" style="padding:5% 15%">
       <el-form ref="form" :model="form" :rules="rules" label-width="155px">
         <el-row>         
-          
+          <span @click="mesCount" style="cursor:pointer"><el-button type="primary" size="mini">click me</el-button></span>
+          <span>{{counts}}</span>
           <el-col :span="24">
             <el-form-item label="填报年份" prop="year">	      
               <el-date-picker v-model="form.year" type="year" placeholder="填报年份" value-format='yyyy'style="width:100%" :picker-options="expireTimeOption"></el-date-picker>
@@ -296,7 +296,7 @@ export default {
       foreignTrade:[],
       overseasInvest:[],
       social:[],
-      count:1,
+      count:0,
       basicAccountFileId:null,
       customsNoFileId:null,
       foreignInvestNoFileId:null,
@@ -331,54 +331,53 @@ export default {
     }
   },
    methods:{
-     getDictsList(){
+      mesCount(){
+        this.count++
+        this.$store.commit('countnumber',this.count)
+      },
+      getDictsList(){
        industry().then(res=>{
          this.industryOptions = res.data
        })
        //经济类型
        this.getDicts('rs_ent_economic_type').then(res =>{
-          this.economictypeOptions =res.data
-       })
+        this.economictypeOptions =res.data
+      })
        this.getDicts('rs_ent_belong').then(res =>{
-          this.belongOptions =res.data
-       })
+        this.belongOptions =res.data
+      })
        this.getDicts('rs_ent_nature').then(res =>{
-          this.natureOptions =res.data
-       })
+        this.natureOptions =res.data
+      })
        this.getDicts('rs_ent_type').then(res =>{
-          this.enttypeOptions =res.data
-       })
+        this.enttypeOptions =res.data
+      })
        this.getDicts('rs_ent_unit_nature').then(res =>{
-          this.unitnatureOptions =res.data
-       })
+        this.unitnatureOptions =res.data
+      })
        this.getDicts('rs_ent_scale').then(res =>{
-          this.scaleOptions =res.data
-       })
-       
+        this.scaleOptions =res.data
+      })
        let a={
          year:this.year
        }
        budgettree(a).then(res=>{
         //this.intentBudgetOptions = this.handleTree(res.data,'parentId','budgetId','childs','lv')
-         this.intentBudgetOptions = []
-         const menu = { budgetId: "lv0", budgetName: '全部', childs: [] }
-         menu.childs = res.data.childs
-         this.intentBudgetOptions.push(menu)
-       })
+        this.intentBudgetOptions = []
+        const menu = { budgetId: "lv0", budgetName: '全部', childs: [] }
+        menu.childs = res.data.childs
+        this.intentBudgetOptions.push(menu)
+      })
        areacodetree().then(res=>{
          //console.log(res)
          this.areacodeOptions = []
-        const menu = { areaCode: 430000, areaName: '湖南省', children: [] }
-        menu.children = res.data.children
-        this.areacodeOptions.push(menu)
+         const menu = { areaCode: 430000, areaName: '湖南省', children: [] }
+         menu.children = res.data.children
+         this.areacodeOptions.push(menu)
          //this.areacodeOptions = res.data.children
        })
        this.proofListdata = []
      },
-      mesCount(){
-        this.count++
-        this.$store.commit('countnumber',this.count)
-      },
       normalizer(node) {
         if (!node.childs) {
           delete node.childs;
@@ -473,7 +472,6 @@ export default {
       this.getDictsList()
       this.formopen = true
     },
-    changeArea(){},
     submitForm(){
       this.$refs.form.validate(valid => {
         if(this.customsNoFileId){

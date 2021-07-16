@@ -179,7 +179,7 @@ export default {
       }else if(this.registerForm.mobile==''){
         this.$message('请填写手机号')
       }else{
-        let formData = new FormData();
+          let formData = new FormData();
 					formData.append('imgcode', this.registerForm.code);
 					formData.append('mobile', this.registerForm.mobile);
 					formData.append('uuid', this.registerForm.uuid);
